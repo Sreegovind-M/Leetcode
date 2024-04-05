@@ -10,10 +10,10 @@ class Solution {
                 st.push(c);
             }
         }
-        String res = "";
-        for (char c : st){
-            res += c;
+        StringBuilder res = new StringBuilder();
+        while (!st.empty()){
+            res.insert(0, st.pop());
         }
-        return res;
+        return res.toString();
     }
 }
