@@ -1,14 +1,13 @@
 class Solution {
     public int finalValueAfterOperations(String[] operations) {
-        int x = 0;
-        for (String s : operations){
-            if (s.contains("+")){
-                x++;
-            }
-            else {
-                x--;
+        int count = 0;
+        for (String a : operations){
+            if (a.contains("-")){
+                count--;
+            }else {
+                count++;
             }
         }
-        return x;
+        return count;
     }
 }
