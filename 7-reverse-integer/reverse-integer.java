@@ -1,16 +1,15 @@
 class Solution {
     public int reverse(int x) {
-        long num = 0;
-        int temp = x;
+        long res = 0;
+
         while (x != 0){
             int rem = x % 10;
-            num = (num * 10) + rem;
+            res = (res * 10) + rem;
             x /= 10;
         }
-        if (num > 2147483647 || num < -2147483648){
-            return 0;
+        if (res > -2147483648 && res < 2147483647){
+            return (int)res;
         }
-        
-        return (int)num;
+        return 0;
     }
 }
