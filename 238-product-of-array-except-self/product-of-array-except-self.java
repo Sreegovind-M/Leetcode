@@ -3,7 +3,6 @@ class Solution {
         int n = nums.length;
         int pre[] = new int[n];
         int suf[] = new int[n];
-        int res[] = new int[n];
         pre[0] = 1;
         suf[n - 1] = 1;
 
@@ -13,7 +12,8 @@ class Solution {
         for (int i = n - 2; i >= 0; i--){
             suf[i] = suf[i + 1] * nums[i + 1];
         }
-        for (int i = 0; i < n; i++){
+        int res[] = new int[n];
+        for(int i = 0; i < n; i++){
             res[i] = pre[i] * suf[i];
         }
         return res;
