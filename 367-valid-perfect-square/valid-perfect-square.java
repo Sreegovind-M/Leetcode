@@ -7,15 +7,15 @@ class Solution {
 
 
         while (low <= high){
-            long mid = (low + high) / 2;
-            if (mid * mid == num){
+            int mid = low + (high - low) / 2;
+            if (mid == num / mid && num % mid == 0){
                 return true;
             }
-            if (mid * mid > num) {
-                high = (int)mid - 1;
+            if (mid > num / mid) {
+                high = mid - 1;
             }
             else {
-                low = (int)mid + 1;
+                low = mid + 1;
             }
         }
         return false;
