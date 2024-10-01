@@ -9,7 +9,7 @@ class Solution {
         }
         int res = left;
         while (left <= right){
-            int mid = (left + right) / 2;
+            int mid = left + (right - left) / 2;
 
             int no_of_days = 1;
             int temp = 0;
@@ -20,8 +20,6 @@ class Solution {
                 }
                 temp += weights[i];
             }
-            System.out.println(mid + " " + no_of_days);
-            System.out.println("l - " + left + " r - " +  right);
             if (no_of_days <= days){
                 res = mid;
                 right = mid - 1;
