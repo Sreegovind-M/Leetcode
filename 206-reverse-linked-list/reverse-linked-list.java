@@ -15,14 +15,12 @@ class Solution {
 
         if (head == null) return null;
 
-        while (curr.next != null && curr != null){
+        while (curr != null){
             ListNode next_node = curr.next;
             curr.next = prev;
             prev = curr;
-            System.out.print(curr.val + " ");
             curr = next_node;
         }
-        curr.next = prev;
-        return curr;
+        return prev;
     }
 }
