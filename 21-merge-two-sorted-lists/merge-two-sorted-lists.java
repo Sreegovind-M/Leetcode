@@ -13,12 +13,6 @@ class Solution {
         if (list1 == null && list2 == null){
             return null;
         }
-        else if (list1 == null && list2 != null){
-            return list2;
-        }
-        else if (list1 != null && list2 == null){
-            return list1;
-        }
         else {
             ListNode res = new ListNode(0);
             ListNode temp1 = list1;
