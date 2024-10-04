@@ -11,37 +11,40 @@
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0) return null;
-        if (lists.length == 1) return lists[0];
 
+        return find(lists, 0, lists.length - 1);
+    }
+    public ListNode find(ListNode lists[], int s, int e){
+        if (s == e){
+            return lists[s];
+        }
+        int mid = (s + e) / 2;
+        ListNode left = find(lists, s, mid);
+        ListNode right = find(lists, mid + 1, e);
+        return merge(left, right);
+    }
+    public ListNode merge(ListNode l1, ListNode l2){
         ListNode res = new ListNode(0);
-        ListNode iterate = res;
+        ListNode temp = res;
 
-        ListNode temp1 = lists[0];
-        for (int i = 1; i < lists.length; i++){
-            ListNode temp2 = lists[i];
-            iterate = res;
+        while (l1 != null && l2 != null){
+            if (l1.val <= l2.val){
+                temp.next = l1;
+                temp = l1;
+                l1 = l1.next;
+            }
+            else {
+                temp.next = l2;
+                temp = l2;
+                l2 = l2.next;
+            }
+        }
 
-            while (temp1 != null && temp2 != null){
-                if (temp1.val <= temp2.val){
-                    iterate.next = temp1;
-                    iterate = temp1;
-                    temp1 = temp1.next;
-                }
-                else {
-                    iterate.next = temp2
-                    ;
-                    iterate = temp2;
-                    temp2 = temp2.next;
-                }
-            }
-
-            if (temp1 != null){
-                iterate.next = temp1;
-            }
-            if (temp2 != null){
-                iterate.next = temp2;
-            }
-            temp1 = res.next;
+        if (l1 != null){
+            temp.next = l1;
+        }
+        if (l2 != null){
+            temp.next = l2;
         }
         return res.next;
     }
