@@ -6,9 +6,9 @@ class Solution {
         }
         int ind = 0;
         while (al.size() != 1){
-            int remove = (ind + k - 1) % al.size();
-            al.remove(remove);
-            ind = remove;
+            int rem = (ind + k - 1) % al.size();
+            al.remove(rem);
+            ind = rem;
         }
         return al.get(0);
     }
