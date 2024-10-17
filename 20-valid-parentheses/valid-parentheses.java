@@ -27,11 +27,12 @@ class Solution {
         // return st.empty();
         for(char c : s.toCharArray())
         {
-            if(c == '(') st.push(')');
-            if(c == '[') st.push(']');
-            if(c == '{') st.push('}');
-            if(c == ']' || c == ')' || c == '}')
-                if(st.isEmpty() || st.pop() != c) return false;
+            switch(c){
+                case '}' -> { if( st.isEmpty() || st.pop() != '{') return false;}
+                case ']' -> { if( st.isEmpty() || st.pop() != '[') return false;}
+                case ')' -> { if( st.isEmpty() || st.pop() != '(') return false;}
+                default -> st.push(c);
+            }
         }
         return st.isEmpty();
     }
