@@ -35,6 +35,6 @@ class Solution {
         int [] f = new int[n+1];
         //for(int i = 0; i<=n; f[i++] = -1);
         if(f[n] != 0) return f[n];
-        return fib(n-1) + fib(n-2);
+        return f[n] = fib(n-1) + fib(n-2);
     }
 }
