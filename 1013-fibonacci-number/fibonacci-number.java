@@ -33,8 +33,8 @@ class Solution {
     public int fib(int n){
         if(n<=1) return n;
         int [] f = new int[n+1];
-        for(int i = 0; i<=n; f[i++] = -1);
-        if(f[n] != -1) return f[n];
+        //for(int i = 0; i<=n; f[i++] = -1);
+        if(f[n] != 0) return f[n];
         return f[n] = fib(n-1) + fib(n-2);
     }
 }
