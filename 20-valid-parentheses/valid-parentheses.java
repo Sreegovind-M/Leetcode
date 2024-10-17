@@ -33,6 +33,6 @@ class Solution {
             if(c == ']' || c == ')' || c == '}')
                 if(st.isEmpty() || st.pop() != c) return false;
         }
-        return true && st.isEmpty();
+        return st.isEmpty();
     }
 }
