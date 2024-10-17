@@ -23,18 +23,18 @@ class Solution {
     //     int[][] resultMatrix = matrixPower(T, n - 1);
     //     return resultMatrix[0][0];
     // }
-    // public int fib(int n) {
-    //     if (n <= 1) return n;
-    //     int[] m = new int[n + 1];
-    //     m[0] = 0; m[1] = 1;
-    //     for(int ind = 2; ind <=n; m[ind] = m[ind-1] + m[ind-2],ind++ );
-    //     return m[n];
-    // }
-    public int fib(int n){
-        if(n<=1) return n;
-        int [] f = new int[n+1];
-        //for(int i = 0; i<=n; f[i++] = -1);
-        if(f[n] != 0) return f[n];
-        return f[n] = fib(n-1) + fib(n-2);
+    public int fib(int n) {
+        if (n <= 1) return n;
+        int[] m = new int[n + 1];
+        m[0] = 0; m[1] = 1;
+        for(int ind = 2; ind <=n; m[ind] = m[ind-1] + m[ind-2],ind++ );
+        return m[n];
     }
+    // public int fib(int n){
+    //     if(n<=1) return n;
+    //     int [] f = new int[n+1];
+    //     //for(int i = 0; i<=n; f[i++] = -1);
+    //     if(f[n] != 0) return f[n];
+    //     return f[n] = fib(n-1) + fib(n-2);
+    // }
 }
