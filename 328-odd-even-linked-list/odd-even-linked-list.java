@@ -32,7 +32,6 @@ class Solution {
             temp = temp.next;
         }
         odd_iterate.next = even.next;
-        ListNode new_head = odd.next;
-        return new_head;
+        return odd.next;
     }
 }
