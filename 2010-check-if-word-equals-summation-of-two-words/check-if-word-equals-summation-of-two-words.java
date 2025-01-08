@@ -1,10 +1,6 @@
 class Solution {
     public boolean isSumEqual(String firstWord, String secondWord, String targetWord) {
-        int num1 = findNumber(firstWord);
-        int num2 = findNumber(secondWord);
-        int sum = findNumber(targetWord);
-
-        return (num1 + num2) == sum;
+        return (findNumber(firstWord) + findNumber(secondWord)) == findNumber(targetWord);
     }
     public int findNumber(String s){
         int number = 0;
