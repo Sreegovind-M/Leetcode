@@ -15,29 +15,29 @@
  */
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
-        List<Integer> al = new ArrayList<>();
-        if (root == null) return al;
-        traversal(root, al);
+        List<Integer> res = new ArrayList<>();
 
-        return al;
-    }
-    public void traversal(TreeNode root, List<Integer> al){
+        if (root == null) return res;
 
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
+        Queue<TreeNode> que = new LinkedList<>();
 
-        while (!q.isEmpty()){
-            int n = q.size();
+        que.add(root);
 
-            for (int i = 0; i < n; i++){
-                TreeNode curr = q.poll();
-                System.out.println(curr.val);
-                if (i == n - 1){
-                    al.add(curr.val);
+        while (!que.isEmpty()) {
+            int n = que.size();
+            for (int i = 0; i < n; i++) {
+                TreeNode node = que.poll();
+                if (i == n - 1) {
+                    res.add(node.val);
                 }
-                if (curr.left != null) q.add(curr.left);
-                if (curr.right != null) q.add(curr.right);
+                if (node.left != null) {
+                    que.add(node.left);
+                }
+                if (node.right != null) {
+                    que.add(node.right);
+                }
             }
         }
+        return res;
     }
 }
