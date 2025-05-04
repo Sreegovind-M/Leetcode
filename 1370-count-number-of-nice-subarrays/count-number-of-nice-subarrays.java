@@ -1,16 +1,26 @@
 class Solution {
     public int numberOfSubarrays(int[] nums, int k) {
+
+        return find(nums, k) - find(nums, k - 1);
+    }
+    public int find(int nums[], int k) {
+        int res = 0;
+        int l = 0;
+        int r = 0;
         int n = nums.length;
-        int[] cnt = new int[n + 1];
-        cnt[0] = 1;
-        int ans = 0, t = 0;
-        for (int v : nums) {
-            t += v & 1;
-            if (t - k >= 0) {
-                ans += cnt[t - k];
+
+        int count = 0;
+        while (r < n) {
+            count += nums[r] % 2;
+
+            while (l <= r && count > k) {
+                count -= nums[l] % 2;
+                l++;
             }
-            cnt[t]++;
+            res += (r - l + 1);
+            r++;
         }
-        return ans;
+        return res;
+
     }
 }
