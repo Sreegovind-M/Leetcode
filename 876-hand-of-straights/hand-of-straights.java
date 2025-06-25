@@ -1,36 +1,33 @@
 class Solution {
     public boolean isNStraightHand(int[] hand, int groupSize) {
         int n = hand.length;
-        if (n % groupSize != 0){
+        if (n % groupSize != 0) {
             return false;
         }
         Arrays.sort(hand);
 
-        for (int i = 0; i < n; i++){
-            if (hand[i] >= 0){
-                if (!find(hand, groupSize, i, n)){
+        for (int i = 0; i < n; i++) {
+            if (hand[i] >= 0) {
+                if (!find(hand, i, groupSize, n)) {
                     return false;
                 }
             }
         }
         return true;
     }
-    public boolean find(int hand[], int groupSize, int i, int n){
-        int f = hand[i] + 1;
-        hand[i] = -1;
+    public boolean find(int hand[], int i, int size, int n) {
         int count = 1;
-        i += 1;
-        while (i < n && count < groupSize){
-            if (hand[i] == f){
-                f = hand[i] + 1;
+        int next = hand[i] + 1;
+        i++;
+
+        while (i < n && count < size) {
+            if (hand[i] == next) {
+                next = hand[i] + 1;
                 hand[i] = -1;
                 count++;
             }
             i++;
         }
-        if (count != groupSize){
-            return false;
-        }
-        return true;
+        return count == size;
     }
 }
