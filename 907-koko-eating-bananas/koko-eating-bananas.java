@@ -1,35 +1,36 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         Arrays.sort(piles);
-        int low = 1;
-        int high = piles[piles.length - 1];
-        int res = high;
-        while (low < high) {
-            int mid = (low + high) / 2;
 
-            if (check(piles, h, mid) == true) {
-                high = mid;
+        int n = piles.length;
+        int x = 1;
+        int y = piles[n - 1];
+        while (x <= y) {
+            int mid = x + (y - x) / 2;
+
+            if (find(mid, piles, h)) {
+                y = mid - 1;
             }
             else {
-                low = mid + 1;
+                x = mid + 1;
             }
         }
-        return low;
+        return x;
     }
-    public boolean check(int piles[], int h, int num) {
+    public boolean find(int num, int[] piles, int h) {
+        
         for (int i = 0; i < piles.length; i++) {
             double quo = ((double)piles[i] / num);
             if (quo < 1) {
                 h--;
             }
             else {
-                h -= (Math.ceil(quo));
+                h -= Math.ceil(quo);
             }
-
             if (h < 0) {
                 return false;
             }
         }
-        return h >= 0;
+        return true;
     }
 }
