@@ -4,18 +4,18 @@ class Solution {
 
         int num = 1;
         int i = 0;
-        while (true) {
-            if (i < arr.length && arr[i] == num) {
+        while (i < arr.length) {
+            if (arr[i] == num) {
                 i++;
             }
             else {
                 count++;
             }
             if (count == k) {
-                break;
+                return num;
             }
             num++;
         }
-        return num;
+        return num + (k - count - 1);
     }
 }
