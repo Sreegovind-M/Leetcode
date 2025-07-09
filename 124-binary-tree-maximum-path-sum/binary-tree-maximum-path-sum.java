@@ -27,10 +27,8 @@ class Solution {
         if (root == null) {
             return 0;
         }
-        int l = 0;
-        int r = 0;
-        l = Math.max(l, find(root.left, maxi));
-        r = Math.max(r, find(root.right, maxi));
+        int l = Math.max(0, find(root.left, maxi));
+        int r = Math.max(0, find(root.right, maxi));
 
         maxi[0] = Math.max(l + r + root.val, maxi[0]);
         System.out.println(l + " " + r);
