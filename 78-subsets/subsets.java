@@ -15,12 +15,9 @@ class Solution {
             }
             return;
         }
-        // res.add(new ArrayList<>(al));
-        for (int i = ind; i < nums.length; i++) {
-            al.add(nums[i]);
-            findSubsets(nums, i + 1, al, res);
-            al.remove(al.size() - 1);
-        }
+        al.add(nums[ind]);
+        findSubsets(nums, ind + 1, al, res);
+        al.remove(al.size() - 1);
         findSubsets(nums, ind + 1, al, res);
     }
 }
