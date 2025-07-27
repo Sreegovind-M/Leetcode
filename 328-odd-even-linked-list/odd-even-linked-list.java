@@ -10,28 +10,47 @@
  */
 class Solution {
     public ListNode oddEvenList(ListNode head) {
-        ListNode odd = new ListNode(-1);
-        ListNode odd_iterate = odd;
-        ListNode even = new ListNode(-1);
-        ListNode even_iterate = even;
+        ListNode oddHead = new ListNode(-1);
+        ListNode evenHead = new ListNode(-1);
 
-        int i = 1;
-        ListNode temp = head;
-
-        while (temp != null){
-            ListNode node = new ListNode(temp.val);
-            if (i % 2 != 0){
-                odd_iterate.next = node;
-                odd_iterate = node;
+        ListNode t = head;
+        ListNode oddTemp = oddHead;
+        ListNode evenTemp = evenHead;
+        int count = 1;
+        while (t != null) {
+            if (count % 2 == 0) {
+                evenTemp.next = new ListNode(t.val);
+                evenTemp = evenTemp.next;
             }
             else {
-                even_iterate.next = node;
-                even_iterate = node;
+                oddTemp.next = new ListNode(t.val);
+                oddTemp = oddTemp.next;
             }
-            i++;
+            count++;
+            t = t.next;
+        }
+        evenTemp.next = null;
+
+        ListNode resHead = new ListNode(-1);
+        ListNode temp = resHead;
+        temp.next = oddHead.next;
+        oddTemp.next = evenHead.next;
+
+        
+        // if (oddTemp != null) {
+        //     temp.next = oddTemp;
+        // }
+        // if (evenTemp != null) {
+        //     temp.next = evenTemp;
+        // }
+        display(resHead.next);
+        return resHead.next;
+    }
+    public void display(ListNode head) {
+        ListNode temp = head;
+        while (temp != null) {
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
-        odd_iterate.next = even.next;
-        return odd.next;
     }
 }
