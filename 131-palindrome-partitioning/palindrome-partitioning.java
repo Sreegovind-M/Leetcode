@@ -1,33 +1,35 @@
 class Solution {
     public List<List<String>> partition(String s) {
         List<List<String>> res = new ArrayList<>();
-        back_track(s, 0, res, new ArrayList<>());
+        List<String> al = new ArrayList<>();
+
+        find(s, 0, al, res);
 
         return res;
     }
-
-    public void back_track(String s, int ind, List<List<String>> res, ArrayList<String> al){
-
-        if (ind == s.length()){
+    public void find(String s, int ind, List<String> al, List<List<String>> res) {
+        if (ind == s.length()) {
+            for (String x : al) {
+                if (!isPalindrome(x)) {
+                    return;
+                }
+            }
             res.add(new ArrayList<>(al));
+            return;
         }
+        System.out.println(al);
 
-        for (int i = ind; i < s.length(); i++){
-            if (palindrome(s, ind, i)){
+        for (int i = ind; i < s.length(); i++) {
+            if (isPalindrome(s.substring(ind, i + 1))) {
                 al.add(s.substring(ind, i + 1));
-                back_track(s, i + 1, res, al);
+                find(s, i + 1, al, res);
                 al.remove(al.size() - 1);
             }
         }
-        
-    }
-    public boolean palindrome(String s, int start, int end){
-        while (start <= end){
-            if (s.charAt(start++) != s.charAt(end--)){
-                return false;
-            }
-        }
-        return true;
-    }
 
+    }
+    public boolean isPalindrome(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        return sb.reverse().toString().equals(str);
+    }
 }
