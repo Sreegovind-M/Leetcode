@@ -3,28 +3,32 @@ class Solution {
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
 
         int n = intervals.length;
-        int x = intervals[0][0];
-        int y = intervals[0][1];
+        int m = intervals[0].length;
+
+        int start = intervals[0][0];
+        int end = intervals[0][1];
 
         Map<Integer, Integer> map = new HashMap<>();
+
         for (int i = 1; i < n; i++) {
-            if (intervals[i][0] <= y) {
-                y = Math.max(y, intervals[i][1]);
+            if (intervals[i][0] <= end) {
+                end = Math.max(end, intervals[i][1]);
+                start = Math.min(start, intervals[i][0]);
             }
             else {
-                map.put(x, y);
-                x = intervals[i][0];
-                y = intervals[i][1];
+                map.put(start, end);
+                start = intervals[i][0];
+                end = intervals[i][1];
             }
         }
-        if (!map.containsKey(x)) {
-            map.put(x, y);
+        if (!map.containsKey(start)) {
+            map.put(start, end);
         }
         int res[][] = new int[map.size()][2];
         int i = 0;
-        for (var m : map.entrySet()) {
-            res[i][0] = m.getKey();
-            res[i][1] = m.getValue();
+        for (var x : map.entrySet()) {
+            res[i][0] = x.getKey();
+            res[i][1] = x.getValue();
             i++;
         }
         return res;
