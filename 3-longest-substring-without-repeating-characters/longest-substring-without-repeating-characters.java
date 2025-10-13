@@ -1,12 +1,10 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int n = s.length();
-        if (n == 0) {
-            return 0;
-        }
         int l = 0;
         int r = 0;
-        int maxi = 1;
+        int n = s.length();
+        int maxi = 0;
+
         List<Character> al = new ArrayList<>();
         while (r < n) {
             while (al.contains(s.charAt(r))) {
@@ -14,7 +12,7 @@ class Solution {
                 l++;
             }
             al.add(s.charAt(r));
-            maxi = Math.max(maxi, al.size());
+            maxi = Math.max(maxi, r - l + 1);
             r++;
         }
         return maxi;
