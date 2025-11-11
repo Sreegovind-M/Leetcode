@@ -22,11 +22,9 @@ class Solution {
                     st.push(c);
                     res += c;
                 }
-
             }
             
         }
-        System.out.println(st);
         return res;
     }
 }
