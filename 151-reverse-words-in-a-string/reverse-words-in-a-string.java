@@ -1,27 +1,20 @@
 class Solution {
     public String reverseWords(String s) {
         s = s.trim();
-
         int n = s.length();
-        int i = s.length() - 1;
-        int j = s.length() - 1;
 
+        int i = 0;
         String res = "";
-        int under = 0;
-        while (i >= 0) {
-            if (s.charAt(i) == ' ') {
-                i--;
-                continue;
-            }
+        while (i < n) {
             String temp = "";
-            while (i >= 0 && s.charAt(i) != ' ') {
-                temp = s.charAt(i) + temp;
-                i--;
+            while (i < n && s.charAt(i) != ' ') {
+                temp += s.charAt(i);
+                i++;
             }
-            res = (res) + temp + " ";
-        }
-        // System.out.println(temp);
-        return res.trim();
+            if (!temp.isEmpty()) res = temp + " " + res;
+            i++;
 
+        }
+        return res.trim();
     }
 }
